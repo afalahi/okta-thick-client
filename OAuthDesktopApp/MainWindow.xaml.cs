@@ -18,11 +18,11 @@ namespace OAuthApp
     public partial class MainWindow : Window
     {
         // client configuration
-        const string clientID = "0oa30domwdegk1ZAD357";
-        const string clientSecret = "SkLJghnDpNtGONQTKUSyTLh1BxqilGhmG1tZmsst";
-        const string authorizationEndpoint = "https://middle-earth.okta.com/oauth2/default/v1/authorize";
-        const string tokenEndpoint = "https://middle-earth.okta.com/oauth2/default/v1/token";
-        const string userInfoEndpoint = "https://middle-earth-admin.okta.com/userinfo";
+        const string clientID = "";
+        const string clientSecret = "";
+        const string authorizationEndpoint = "";
+        const string tokenEndpoint = "";
+        const string userInfoEndpoint = "";
 
         public MainWindow()
         {
@@ -77,7 +77,7 @@ namespace OAuthApp
 
             // Sends an HTTP response to the browser.
             var response = context.Response;
-            string responseString = string.Format("<html><head><meta http-equiv='refresh' content='10;url=https://middle-earth.okta.com'></head><body>Please return to the app.</body></html>");
+            string responseString = string.Format("<html><head><meta http-equiv='refresh' content='10;url=<add base url here>'></head><body>Please return to the app.</body></html>");
             var buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
             response.ContentLength64 = buffer.Length;
             var responseOutput = response.OutputStream;
@@ -123,7 +123,7 @@ namespace OAuthApp
             output("Exchanging code for tokens...");
 
             // builds the  request
-            string tokenRequestURI = "https://middle-earth.okta.com/oauth2/default/v1/token";
+            string tokenRequestURI = "";
             string tokenRequestBody = string.Format("code={0}&redirect_uri={1}&client_id={2}&code_verifier={3}&client_secret={4}&scope=&grant_type=authorization_code",
                 code,
                 System.Uri.EscapeDataString(redirectURI),
@@ -186,7 +186,7 @@ namespace OAuthApp
             output("Making API Call to Userinfo...");
 
             // builds the  request
-            string userinfoRequestURI = "https://middle-earth.okta.com/oauth2/default/v1/userinfo";
+            string userinfoRequestURI = "";
 
             // sends the request
             HttpWebRequest userinfoRequest = (HttpWebRequest)WebRequest.Create(userinfoRequestURI);
